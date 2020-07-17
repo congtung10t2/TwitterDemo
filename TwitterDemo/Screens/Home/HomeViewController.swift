@@ -8,13 +8,27 @@
 
 import UIKit
 
+protocol HomeViewModelProtocol: class {
+  func post()
+  func fetch(completion: ([Post]) -> Void)
+}
+
+class HomeViewModel : HomeViewModelProtocol {
+  func post() {
+    
+  }
+  
+  func fetch(completion: ([Post]) -> Void) {
+    
+  }
+}
 class HomeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-
+  var model: HomeViewModelProtocol!
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
+  }
+  
+  
 }
 
