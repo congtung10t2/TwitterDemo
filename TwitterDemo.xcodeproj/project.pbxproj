@@ -10,8 +10,13 @@
 		036C343351DFB991DD4DCC2C /* Pods_TwitterDemo_TwitterDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 664B99F832A1E6E27BE29CBB /* Pods_TwitterDemo_TwitterDemoUITests.framework */; };
 		2C393F71A33D487C4410F649 /* Pods_TwitterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D98864B605FF4D6C3F95C5 /* Pods_TwitterDemo.framework */; };
 		8A2F330DE4BC80171A4910F0 /* Pods_TwitterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E41B542FC8EF4ED85D747BC /* Pods_TwitterDemoTests.framework */; };
+		A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40620C424C253A6009394BB /* UIImageView+Extensions.swift */; };
 		A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */; };
 		A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15024C248F2008FE7C6 /* SignupViewController.swift */; };
+		A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15224C24EBC008FE7C6 /* PostViewCell.swift */; };
+		A429E15524C24EFD008FE7C6 /* PostViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A429E15424C24EFD008FE7C6 /* PostViewCell.xib */; };
+		A429E15724C24F6B008FE7C6 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15624C24F6B008FE7C6 /* UITableView+Extensions.swift */; };
+		A429E15924C24F9A008FE7C6 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15824C24F9A008FE7C6 /* UIView+Extensions.swift */; };
 		A45D485724C1DFF4004C4473 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45D485624C1DFF4004C4473 /* Post.swift */; };
 		C75FFAB524C1ABA200583450 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75FFAB424C1ABA200583450 /* LoginViewController.swift */; };
 		C75FFAB724C1ABD300583450 /* LoginScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C75FFAB624C1ABD300583450 /* LoginScreen.storyboard */; };
@@ -51,8 +56,13 @@
 		5E41B542FC8EF4ED85D747BC /* Pods_TwitterDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		664B99F832A1E6E27BE29CBB /* Pods_TwitterDemo_TwitterDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterDemo_TwitterDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9DF9F1FA3E2F77F7685C2F /* Pods-TwitterDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemoTests.release.xcconfig"; path = "Target Support Files/Pods-TwitterDemoTests/Pods-TwitterDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A40620C424C253A6009394BB /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UIImageView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = SOURCE_ROOT; };
 		A429E15024C248F2008FE7C6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A429E15224C24EBC008FE7C6 /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewCell.swift; path = TwitterDemo/Screens/Login/PostViewCell.swift; sourceTree = SOURCE_ROOT; };
+		A429E15424C24EFD008FE7C6 /* PostViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PostViewCell.xib; path = TwitterDemo/Screens/Login/PostViewCell.xib; sourceTree = SOURCE_ROOT; };
+		A429E15624C24F6B008FE7C6 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITableView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UITableView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		A429E15824C24F9A008FE7C6 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UIView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A45D485624C1DFF4004C4473 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = SOURCE_ROOT; };
 		B54C0AD32DEF12858C2486DA /* Pods-TwitterDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-TwitterDemoTests/Pods-TwitterDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B9240630963D95B1EBB8BBE7 /* Pods-TwitterDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemo.debug.xcconfig"; path = "Target Support Files/Pods-TwitterDemo/Pods-TwitterDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +225,8 @@
 		C7925FD524C1A53F00262A28 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A429E15224C24EBC008FE7C6 /* PostViewCell.swift */,
+				A429E15424C24EFD008FE7C6 /* PostViewCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -222,6 +234,9 @@
 		C7925FD624C1A54C00262A28 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A429E15624C24F6B008FE7C6 /* UITableView+Extensions.swift */,
+				A429E15824C24F9A008FE7C6 /* UIView+Extensions.swift */,
+				A40620C424C253A6009394BB /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -386,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A429E15524C24EFD008FE7C6 /* PostViewCell.xib in Resources */,
 				C7925FB024C19E8100262A28 /* LaunchScreen.storyboard in Resources */,
 				C7925FAD24C19E8100262A28 /* Assets.xcassets in Resources */,
 				C75FFABA24C1B9E700583450 /* GoogleService-Info.plist in Resources */,
@@ -523,9 +539,13 @@
 				A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */,
 				C7925FA624C19E7F00262A28 /* SceneDelegate.swift in Sources */,
 				A45D485724C1DFF4004C4473 /* Post.swift in Sources */,
+				A429E15724C24F6B008FE7C6 /* UITableView+Extensions.swift in Sources */,
+				A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */,
 				C75FFAB524C1ABA200583450 /* LoginViewController.swift in Sources */,
 				C7925FDE24C1A74200262A28 /* AppConstants.swift in Sources */,
+				A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */,
 				A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */,
+				A429E15924C24F9A008FE7C6 /* UIView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
