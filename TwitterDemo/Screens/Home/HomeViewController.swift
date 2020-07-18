@@ -9,27 +9,29 @@
 import UIKit
 
 protocol HomeViewModelProtocol: class {
-  var posts: [Post]? { get set }
+  var posts: [Post] { get set }
   var isSignedIn: Bool { get set }
-  func post()
   func fetch(completion: ([Post]) -> Void)
-  func writePost(post: Post)
+  func writePost(post: Post, completion: @escaping (Post) -> Void)
+  func signOut()
 }
 
 class HomeViewModel : HomeViewModelProtocol {
-  var posts: [Post]?
+  var posts: [Post] = []
   var isSignedIn: Bool = true
-  func post() {
-    
-  }
   
   func fetch(completion: ([Post]) -> Void) {
     
   }
   
-  func writePost(post: Post) {
+  func writePost(post: Post, completion: @escaping (Post) -> Void) {
     guard isSignedIn else { return }
-    posts?.append(post)
+    posts.append(post)
+    completion(post)
+  }
+  
+  func signOut() {
+    
   }
   
 }
@@ -51,14 +53,16 @@ class HomeViewController: UIViewController {
     tableView.tableFooterView = UIView(frame: .zero)
     
   }
+  
+  
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if model.isSignedIn {
-      return (model.posts?.count ?? 0) + 1
+      return model.posts.count + 1
     }
-    return model.posts?.count ?? 0
+    return model.posts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,13 +70,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     if indexPath.row == 0 && model.isSignedIn {
       let cell: WritingViewCell = tableView.dequeueReusableCell(for: indexPath)
+      cell.delegate = self
       return cell
     }
     let cell: PostViewCell = tableView.dequeueReusableCell(for: indexPath)
-    if let posts = model.posts {
-      cell.load(post: posts[indexPath.row - cellIndexForSigned])
-    }
+    cell.load(post: model.posts[indexPath.row - cellIndexForSigned])
     return cell
+  }
+}
+extension HomeViewController: WritingViewCellDelegate {
+  func onPosted(post: Post) {
+    model.writePost(post: post) { post in
+      self.tableView.reloadData()
+    }
   }
 }
 

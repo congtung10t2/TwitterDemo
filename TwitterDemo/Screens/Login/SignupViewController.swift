@@ -22,12 +22,17 @@ class SignupViewModel : SignupViewModelProtocol {
   }
   func onAuthStateChanged() {
     handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-      
+    
     }
   }
   func signup(email: String, password: String) {
     FirebaseAPI.shared.signup(email: email, password: password) {_,_ in
       
+    }
+  }
+  deinit {
+    if let handle = handle {
+      Auth.auth().removeStateDidChangeListener(handle)
     }
   }
 }

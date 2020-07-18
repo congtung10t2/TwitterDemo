@@ -16,6 +16,7 @@ class PostViewCell: UITableViewCell {
   }
   
   func load(post: Post) {
-    
+    userNameLabel.text = post.author
+    contentTextView.text = post.content
   }
 }

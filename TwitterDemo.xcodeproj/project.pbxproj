@@ -13,6 +13,8 @@
 		A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40620C424C253A6009394BB /* UIImageView+Extensions.swift */; };
 		A422B44E24C297EB008B0824 /* WritingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B44D24C297EB008B0824 /* WritingViewCell.swift */; };
 		A422B45024C29801008B0824 /* WritingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A422B44F24C29801008B0824 /* WritingViewCell.xib */; };
+		A422B45324C2B03B008B0824 /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B45224C2B03B008B0824 /* StoryboardType.swift */; };
+		A422B45624C2B8D4008B0824 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B45524C2B8D4008B0824 /* UserManager.swift */; };
 		A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */; };
 		A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15024C248F2008FE7C6 /* SignupViewController.swift */; };
 		A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15224C24EBC008FE7C6 /* PostViewCell.swift */; };
@@ -61,6 +63,8 @@
 		A40620C424C253A6009394BB /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UIImageView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		A422B44D24C297EB008B0824 /* WritingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WritingViewCell.swift; path = TwitterDemo/Screens/Login/WritingViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A422B44F24C29801008B0824 /* WritingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WritingViewCell.xib; path = TwitterDemo/Screens/Login/WritingViewCell.xib; sourceTree = SOURCE_ROOT; };
+		A422B45224C2B03B008B0824 /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
+		A422B45524C2B8D4008B0824 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = SOURCE_ROOT; };
 		A429E15024C248F2008FE7C6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A429E15224C24EBC008FE7C6 /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewCell.swift; path = TwitterDemo/Screens/Login/PostViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -142,6 +146,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A422B45124C2B022008B0824 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				A422B45224C2B03B008B0824 /* StoryboardType.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		A422B45424C2B8C4008B0824 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A422B45524C2B8D4008B0824 /* UserManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		C75FFAB824C1B64900583450 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +196,8 @@
 		C7925FA224C19E7F00262A28 /* TwitterDemo */ = {
 			isa = PBXGroup;
 			children = (
+				A422B45424C2B8C4008B0824 /* Storage */,
+				A422B45124C2B022008B0824 /* Types */,
 				C75FFAB924C1B9E700583450 /* GoogleService-Info.plist */,
 				C7925FB124C19E8100262A28 /* Info.plist */,
 				C7925FDB24C1A64400262A28 /* Screens */,
@@ -544,6 +566,7 @@
 				A422B44E24C297EB008B0824 /* WritingViewCell.swift in Sources */,
 				C7925FA824C19E7F00262A28 /* HomeViewController.swift in Sources */,
 				C7925FA424C19E7F00262A28 /* AppDelegate.swift in Sources */,
+				A422B45624C2B8D4008B0824 /* UserManager.swift in Sources */,
 				A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */,
 				C7925FA624C19E7F00262A28 /* SceneDelegate.swift in Sources */,
 				A45D485724C1DFF4004C4473 /* Post.swift in Sources */,
@@ -551,6 +574,7 @@
 				A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */,
 				C75FFAB524C1ABA200583450 /* LoginViewController.swift in Sources */,
 				C7925FDE24C1A74200262A28 /* AppConstants.swift in Sources */,
+				A422B45324C2B03B008B0824 /* StoryboardType.swift in Sources */,
 				A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */,
 				A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */,
 				A429E15924C24F9A008FE7C6 /* UIView+Extensions.swift in Sources */,

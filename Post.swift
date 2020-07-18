@@ -9,6 +9,15 @@
 import Foundation
 
 struct Post: Codable {
-  let content: String
-  let author: String
+  var content: String
+  var author: String
+  var date: Date
+}
+
+extension Post {
+  init(content: String) {
+    self.content = content
+    self.author = "anonymous"
+    self.date = Date()
+  }
 }
