@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-U9-dQP">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-U9-dQP">
                         <rect key="frame" x="8" y="9" width="80" height="80"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -26,7 +26,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Contents of the post" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="teV-Oj-cR9">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Contents of the post" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="teV-Oj-cR9">
                         <rect key="frame" x="108" y="38" width="296" height="51"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -36,7 +36,15 @@
                     </textView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentTextView" destination="teV-Oj-cR9" id="hyd-Bh-Yur"/>
+                <outlet property="photoImageView" destination="Hmq-U9-dQP" id="NtB-HK-Y9j"/>
+                <outlet property="userNameLabel" destination="BfB-Nj-a3L" id="npt-Lk-bcP"/>
+            </connections>
             <point key="canvasLocation" x="66.666666666666671" y="47.544642857142854"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic-photo" width="150" height="150"/>
+    </resources>
 </document>

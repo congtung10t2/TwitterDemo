@@ -11,6 +11,8 @@
 		2C393F71A33D487C4410F649 /* Pods_TwitterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D98864B605FF4D6C3F95C5 /* Pods_TwitterDemo.framework */; };
 		8A2F330DE4BC80171A4910F0 /* Pods_TwitterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E41B542FC8EF4ED85D747BC /* Pods_TwitterDemoTests.framework */; };
 		A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40620C424C253A6009394BB /* UIImageView+Extensions.swift */; };
+		A422B44E24C297EB008B0824 /* WritingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B44D24C297EB008B0824 /* WritingViewCell.swift */; };
+		A422B45024C29801008B0824 /* WritingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A422B44F24C29801008B0824 /* WritingViewCell.xib */; };
 		A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */; };
 		A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15024C248F2008FE7C6 /* SignupViewController.swift */; };
 		A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A429E15224C24EBC008FE7C6 /* PostViewCell.swift */; };
@@ -57,6 +59,8 @@
 		664B99F832A1E6E27BE29CBB /* Pods_TwitterDemo_TwitterDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterDemo_TwitterDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9DF9F1FA3E2F77F7685C2F /* Pods-TwitterDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemoTests.release.xcconfig"; path = "Target Support Files/Pods-TwitterDemoTests/Pods-TwitterDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A40620C424C253A6009394BB /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UIImageView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		A422B44D24C297EB008B0824 /* WritingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WritingViewCell.swift; path = TwitterDemo/Screens/Login/WritingViewCell.swift; sourceTree = SOURCE_ROOT; };
+		A422B44F24C29801008B0824 /* WritingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WritingViewCell.xib; path = TwitterDemo/Screens/Login/WritingViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A429E14E24C2416E008FE7C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = SOURCE_ROOT; };
 		A429E15024C248F2008FE7C6 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A429E15224C24EBC008FE7C6 /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewCell.swift; path = TwitterDemo/Screens/Login/PostViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -227,6 +231,8 @@
 			children = (
 				A429E15224C24EBC008FE7C6 /* PostViewCell.swift */,
 				A429E15424C24EFD008FE7C6 /* PostViewCell.xib */,
+				A422B44D24C297EB008B0824 /* WritingViewCell.swift */,
+				A422B44F24C29801008B0824 /* WritingViewCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A429E15524C24EFD008FE7C6 /* PostViewCell.xib in Resources */,
+				A422B45024C29801008B0824 /* WritingViewCell.xib in Resources */,
 				C7925FB024C19E8100262A28 /* LaunchScreen.storyboard in Resources */,
 				C7925FAD24C19E8100262A28 /* Assets.xcassets in Resources */,
 				C75FFABA24C1B9E700583450 /* GoogleService-Info.plist in Resources */,
@@ -534,6 +541,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A422B44E24C297EB008B0824 /* WritingViewCell.swift in Sources */,
 				C7925FA824C19E7F00262A28 /* HomeViewController.swift in Sources */,
 				C7925FA424C19E7F00262A28 /* AppDelegate.swift in Sources */,
 				A429E15124C248F2008FE7C6 /* SignupViewController.swift in Sources */,

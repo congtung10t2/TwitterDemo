@@ -17,6 +17,9 @@ protocol SignupViewModelProtocol: class {
 
 class SignupViewModel : SignupViewModelProtocol {
   var handle: AuthStateDidChangeListenerHandle?
+  init() {
+    self.onAuthStateChanged()
+  }
   func onAuthStateChanged() {
     handle = Auth.auth().addStateDidChangeListener { (auth, user) in
       

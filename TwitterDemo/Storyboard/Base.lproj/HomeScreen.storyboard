@@ -15,13 +15,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
-                                <rect key="frame" x="0.0" y="56" width="414" height="806"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
+                                <rect key="frame" x="0.0" y="80" width="414" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kon-wL-IuA" userLabel="TwitterBar">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter Demo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJk-0y-kx6">
+                                        <rect key="frame" x="151.5" y="44" width="111" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="501-VL-ggD"/>
+                                    <constraint firstItem="zJk-0y-kx6" firstAttribute="centerX" secondItem="Kon-wL-IuA" secondAttribute="centerX" id="E65-hR-wMf"/>
+                                    <constraint firstAttribute="bottom" secondItem="zJk-0y-kx6" secondAttribute="bottom" constant="15" id="KHx-5h-G3t"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JNs-l0-D93" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Qf-Y5-p3Z"/>
+                            <constraint firstItem="Kon-wL-IuA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2h0-ea-Ovz"/>
+                            <constraint firstItem="JNs-l0-D93" firstAttribute="top" secondItem="Kon-wL-IuA" secondAttribute="bottom" id="Tm3-E4-jqc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kon-wL-IuA" secondAttribute="trailing" id="XGD-ez-lSc"/>
+                            <constraint firstItem="JNs-l0-D93" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dcu-Iq-7Vm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JNs-l0-D93" secondAttribute="trailing" id="iPY-KK-ITz"/>
+                            <constraint firstItem="Kon-wL-IuA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m8P-dM-74f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JNs-l0-D93" secondAttribute="bottom" id="twH-rI-uwZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

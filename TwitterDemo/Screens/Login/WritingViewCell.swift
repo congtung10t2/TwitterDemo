@@ -1,5 +1,5 @@
 //
-//  PostViewCell.swift
+//  WritingViewCell.swift
 //  TwitterDemo
 //
 //  Created by tùng hoàng on 7/18/20.
@@ -7,15 +7,18 @@
 //
 
 import UIKit
-class PostViewCell: UITableViewCell {
-  @IBOutlet weak var userNameLabel: UILabel!
+class WritingViewCell: UITableViewCell {
   @IBOutlet weak var photoImageView: UIImageView!
-  @IBOutlet weak var contentTextView: UITextView!
+  @IBOutlet weak var contentTextField: UITextField!
+  @IBOutlet weak var postButton: UIButton!
   override func awakeFromNib() {
     super.awakeFromNib()
+    setupView()
   }
   
-  func load(post: Post) {
-    
+  func setupView() {
+    photoImageView.makeRounded()
   }
+  
 }
+
