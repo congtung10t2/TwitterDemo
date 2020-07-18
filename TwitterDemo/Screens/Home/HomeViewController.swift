@@ -13,6 +13,7 @@ protocol HomeViewModelProtocol: class {
   var isSignedIn: Bool { get set }
   func fetch(completion: ([Post]) -> Void)
   func writePost(post: Post, completion: @escaping (Post) -> Void)
+  func getPostByDate() -> [Post]
   func signOut()
 }
 
@@ -28,6 +29,12 @@ class HomeViewModel : HomeViewModelProtocol {
     guard isSignedIn else { return }
     posts.append(post)
     completion(post)
+  }
+  
+  func getPostByDate() -> [Post] {
+    return posts.sorted {
+      $0.date > $1.date
+    }
   }
   
   func signOut() {
@@ -74,7 +81,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       return cell
     }
     let cell: PostViewCell = tableView.dequeueReusableCell(for: indexPath)
-    cell.load(post: model.posts[indexPath.row - cellIndexForSigned])
+    let posts = model.getPostByDate()
+    cell.load(post: posts[indexPath.row - cellIndexForSigned])
     return cell
   }
 }

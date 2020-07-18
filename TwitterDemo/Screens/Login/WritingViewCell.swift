@@ -39,10 +39,10 @@ class WritingViewCell: UITableViewCell {
     switch state {
     case .NoContent:
       postButton.isEnabled = false
-      postButton.titleLabel?.textColor = .gray
+      postButton.backgroundColor = .lightGray
     case .Postable:
       postButton.isEnabled = true
-      postButton.titleLabel?.textColor = .link
+      postButton.backgroundColor = .link
     }
   }
   

@@ -13,6 +13,11 @@ class PostViewCell: UITableViewCell {
   @IBOutlet weak var contentTextView: UITextView!
   override func awakeFromNib() {
     super.awakeFromNib()
+    setupView()
+  }
+  
+  func setupView() {
+    photoImageView.makeRounded()
   }
   
   func load(post: Post) {
