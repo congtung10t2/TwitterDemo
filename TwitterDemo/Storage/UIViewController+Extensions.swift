@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 extension UIViewController {
   func showAlert(title: String, message : String) {
@@ -17,4 +18,9 @@ extension UIViewController {
       self.present(alertController, animated: true, completion: nil)
     })
   }
+  func showLoading() -> MBProgressHUD {
+    return MBProgressHUD.showAdded(to: self.view, animated: true);
+  }
+
 }
+

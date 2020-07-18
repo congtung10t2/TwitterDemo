@@ -41,7 +41,9 @@ final class HomeViewController: UIViewController {
   }
   
   func onPostDeleting(id: String) {
+    let loading = showLoading()
     model.removePost(id: id) { error in
+      loading.hide(animated: true)
       guard let error = error else {
         self.model.posts[id] = nil
         self.tableView.reloadData()
@@ -87,7 +89,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension HomeViewController: WritingViewCellDelegate {
   func onPosted(post: Post) {
+    let loading = showLoading()
     model.writePost(post: post) { (post, error)  in
+      loading.hide(animated: true)
       self.tableView.reloadData()
     }
   }
@@ -102,7 +106,7 @@ extension HomeViewController: PostViewCellDelegate {
   }
   func showActionSheet(id: String) {
     let actionSheet = MDCActionSheetController(title: "Editting",
-                                               message: "you can update or edit your post")
+                                               message: "You can update or edit your post")
     let actionOne = MDCActionSheetAction(title: "Delete",
                                          image: UIImage(named: "Delete"),
                                          handler: {_ in

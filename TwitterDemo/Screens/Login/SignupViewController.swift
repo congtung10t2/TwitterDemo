@@ -12,31 +12,35 @@ import FirebaseAuth
 
 protocol SignupViewModelProtocol: class {
   func onAuthStateChanged()
-  func signup(email: String, password: String)
-  var signedUp: ((AuthDataResult)-> Void)? { get set }
+  func signup(email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)? )
+  var signedUp: (()-> Void)? { get set }
   var onError: ((Error) -> Void)? { get set }
 }
 
 class SignupViewModel : SignupViewModelProtocol {
   var handle: AuthStateDidChangeListenerHandle?
   var onError: ((Error) -> Void)?
-  var signedUp: ((AuthDataResult)-> Void)?
+  var signedUp: (()-> Void)?
   init() {
     self.onAuthStateChanged()
   }
   func onAuthStateChanged() {
     handle = Auth.auth().addStateDidChangeListener { (auth, user) in
       print(auth)
+      if UserManager.shared.isSignedIn() {
+        self.signedUp?()
+      }
     }
   }
-  func signup(email: String, password: String) {
+  func signup(email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)? ) {
     FirebaseAPI.shared.signup(email: email, password: password) { (auth, error) in
       if let error = error {
         self.onError?(error)
       }
-      if let auth = auth {
-        self.signedUp?(auth)
+      if auth != nil {
+        self.signedUp?()
       }
+      completion?(auth, error)
     }
   }
   
@@ -61,7 +65,7 @@ class SignupViewController: UIViewController {
     model.onError = { error in
       self.showAlert(title: "Demo", message: error.localizedDescription)
     }
-    model.signedUp = { auth in
+    model.signedUp = {
       self.dismiss(animated: true, completion: nil)
     }
   }
@@ -69,7 +73,10 @@ class SignupViewController: UIViewController {
   @IBAction func onSignupTap(_ sender: Any) {
     guard let email = userNameTextField.text,
       let password = passwordTextField.text else { return }
-    model.signup(email: email, password: password)
+    let loading = showLoading()
+    model.signup(email: email, password: password) { auth, error in
+      loading.hide(animated: true)
+    }
   }
   @IBAction func onDismissed(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)

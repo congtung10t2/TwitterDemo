@@ -7,6 +7,7 @@ target 'TwitterDemo' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'MaterialComponents/ActionSheet'
+  pod 'MBProgressHUD', '~> 1.2.0'
 
   # Optionally, include the Swift extensions if you're using Swift.
   pod 'FirebaseFirestoreSwift'

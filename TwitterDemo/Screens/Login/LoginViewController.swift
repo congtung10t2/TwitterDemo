@@ -10,23 +10,25 @@ import UIKit
 import FirebaseAuth
 
 protocol LoginViewModelProtocol: class {
-  func onAuthStateChanged()
+  func onAuthStateListener()
   var onError: ((Error) -> Void)? { get set }
   var onSignIn:(() -> Void)? { get set }
-  func signIn(email: String, password: String)
+  func signIn(email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?)
 }
 
 class LoginViewModel : LoginViewModelProtocol {
   var handle: AuthStateDidChangeListenerHandle?
   var onError: ((Error) -> Void)?
   var onSignIn:(() -> Void)?
-  func onAuthStateChanged() {
+  func onAuthStateListener() {
     handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-      
+      if UserManager.shared.isSignedIn() {
+        self.onSignIn?()
+      }
     }
     
   }
-  func signIn(email: String, password: String) {
+  func signIn(email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
     FirebaseAPI.shared.login(email: email, password: password) {[weak self] (auth, error) in
       guard let self = self else { return }
       if let error = error {
@@ -35,6 +37,7 @@ class LoginViewModel : LoginViewModelProtocol {
       if auth != nil {
         self.onSignIn?()
       }
+      completion?(auth, error)
     }
   }
   deinit {
@@ -63,15 +66,20 @@ class LoginViewController: UIViewController {
   @IBAction func onLogin(_ sender: Any) {
     guard let username = usernameTextField.text,
       let password = passwordTextField.text else { return }
-    model.signIn(email: username, password: password)
+    let loading = showLoading()
+    model.signIn(email: username, password: password) { (auth, error) in
+      loading.hide(animated: true)
+    }
   }
   func setupView() {
     model.onSignIn = {
       self.present(HomeViewController.instantiate, animated: true, completion: nil)
     }
     model.onError = { error in
-      print(error)
+      self.showAlert(title: "Demo", message: error.localizedDescription)
     }
+    model.onAuthStateListener()
+    
   }
 
 }
