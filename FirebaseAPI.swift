@@ -7,14 +7,15 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-protocol FirebaseAuth {
+protocol FirebaseAuthProtocol {
   func login(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void)
   func signup(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void)
 }
 
-
-class FirebaseAPI: FirebaseAuth {
+class FirebaseAPI: FirebaseAuthProtocol {
   static let shared = FirebaseAPI()
   func login(email: String, password: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
     Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -28,3 +29,4 @@ class FirebaseAPI: FirebaseAuth {
     }
   }
 }
+

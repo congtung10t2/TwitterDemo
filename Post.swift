@@ -19,5 +19,6 @@ extension Post {
     self.content = content
     self.author = UserManager.shared.getDisplayName() ?? ""
     self.date = Date()
+    print(date)
   }
 }

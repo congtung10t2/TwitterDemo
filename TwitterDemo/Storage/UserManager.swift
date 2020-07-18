@@ -13,6 +13,10 @@ class UserManager {
     return Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? ""
   }
   
+  func getUid() -> String? {
+    return Auth.auth().currentUser?.uid
+  }
+  
   func isSignedIn() -> Bool {
     return Auth.auth().currentUser != nil
   }
