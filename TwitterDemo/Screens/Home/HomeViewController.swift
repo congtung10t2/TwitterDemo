@@ -8,72 +8,24 @@
 
 import UIKit
 import FirebaseAuth
+import MaterialComponents.MaterialActionSheet
 
-protocol HomeViewModelProtocol: class {
-  var posts: [Post] { get set }
-  var loadedData: (() -> ())? { get set }
-  var isSignedIn: Bool { get }
-  func fetchAllPosts()
-  func writePost(post: Post, completion: @escaping (Post?, Error?) -> Void)
-  func getPostByDate() -> [Post]
-  func signOut()
-}
-
-class HomeViewModel : HomeViewModelProtocol {
-  var loadedData: (() -> ())?
-  var posts: [Post] = [] {
-    didSet {
-      loadedData?()
-    }
-  }
-  var isSignedIn: Bool {
-    return UserManager.shared.isSignedIn()
-  }
-  
-  func fetchAllPosts() {
-    DataManager.shared.fetchAll() { (posts, error) in
-      if let posts = posts {
-         self.posts = posts
-      }
-    }
-  }
-  
-  func writePost(post: Post, completion: @escaping (Post?, Error?) -> Void) {
-    guard isSignedIn else { return }
-    
-    DataManager.shared.newPost(post: post) { post, error in
-      if let post = post {
-        self.posts.append(post)
-      }
-      completion(post, error)
-    }
-    
-  }
-  
-  func getPostByDate() -> [Post] {
-    return posts.sorted {
-      $0.date > $1.date
-    }
-  }
-  
-  func signOut() {
-    do {
-      try Auth.auth().signOut()
-    } catch {
-      print("already logged out")
-    }
-  }
-  
-}
 final class HomeViewController: UIViewController {
   var model: HomeViewModelProtocol = HomeViewModel()
   @IBOutlet weak var tableView: UITableView!
+  var edittingId: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
     loadApi()
+    
     // Do any additional setup after loading the view.
+  }
+  func onListenError(){
+    model.onError = { error in
+      self.showAlert(title: "Demo", message: error.localizedDescription)
+    }
   }
   
   func loadApi() {
@@ -87,6 +39,19 @@ final class HomeViewController: UIViewController {
     model.signOut()
     dismiss(animated: true, completion: nil)
   }
+  
+  func onPostDeleting(id: String) {
+    model.removePost(id: id) { error in
+      guard let error = error else {
+        self.model.posts[id] = nil
+        self.tableView.reloadData()
+        return
+      }
+      print(error)
+    }
+   }
+  
+  
   func setupView(){
     tableView.register(PostViewCell.self)
     tableView.register(WritingViewCell.self)
@@ -114,7 +79,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     let cell: PostViewCell = tableView.dequeueReusableCell(for: indexPath)
     let posts = model.getPostByDate()
-    cell.load(post: posts[indexPath.row - cellIndexForSigned])
+    cell.delegate = self
+    let post = posts[indexPath.row - cellIndexForSigned]
+    cell.load(id: post.0, post: post.1)
     return cell
   }
 }
@@ -123,6 +90,34 @@ extension HomeViewController: WritingViewCellDelegate {
     model.writePost(post: post) { (post, error)  in
       self.tableView.reloadData()
     }
+  }
+}
+
+extension HomeViewController: PostViewCellDelegate {
+  func onPostEditting(_ view: PostViewCell) {
+    edittingId = view.postId
+    if let id = edittingId {
+      showActionSheet(id: id)
+    }
+  }
+  func showActionSheet(id: String) {
+    let actionSheet = MDCActionSheetController(title: "Editting",
+                                               message: "you can update or edit your post")
+    let actionOne = MDCActionSheetAction(title: "Delete",
+                                         image: UIImage(named: "Delete"),
+                                         handler: {_ in
+                                          self.onPostDeleting(id: id)
+                                          
+    })
+    let actionTwo = MDCActionSheetAction(title: "Edit",
+                                         image: UIImage(named: "Edit"),
+                                         handler: {_ in
+                                          self.showAlert(title: "Demo", message: "Will implement later")
+    })
+    actionSheet.addAction(actionOne)
+    actionSheet.addAction(actionTwo)
+    
+    present(actionSheet, animated: true, completion: nil)
   }
 }
 

@@ -37,6 +37,11 @@ class LoginViewModel : LoginViewModelProtocol {
       }
     }
   }
+  deinit {
+    if let handle = handle {
+      Auth.auth().removeStateDidChangeListener(handle)
+    }
+  }
 }
 
 class LoginViewController: UIViewController {
@@ -48,6 +53,13 @@ class LoginViewController: UIViewController {
     setupView()
     // Do any additional setup after loading the view.
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if UserManager.shared.isSignedIn() {
+      self.present(HomeViewController.instantiate, animated: true, completion: nil)
+    }
+  }
+  
   @IBAction func onLogin(_ sender: Any) {
     guard let username = usernameTextField.text,
       let password = passwordTextField.text else { return }
@@ -59,9 +71,6 @@ class LoginViewController: UIViewController {
     }
     model.onError = { error in
       print(error)
-    }
-    if UserManager.shared.isSignedIn() {
-      self.present(HomeViewController.instantiate, animated: true, completion: nil)
     }
   }
 

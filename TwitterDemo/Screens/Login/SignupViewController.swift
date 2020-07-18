@@ -14,6 +14,7 @@ protocol SignupViewModelProtocol: class {
   func onAuthStateChanged()
   func signup(email: String, password: String)
   var signedUp: ((AuthDataResult)-> Void)? { get set }
+  var onError: ((Error) -> Void)? { get set }
 }
 
 class SignupViewModel : SignupViewModelProtocol {
@@ -57,6 +58,9 @@ class SignupViewController: UIViewController {
   }
   
   func setupView() {
+    model.onError = { error in
+      self.showAlert(title: "Demo", message: error.localizedDescription)
+    }
     model.signedUp = { auth in
       self.dismiss(animated: true, completion: nil)
     }
