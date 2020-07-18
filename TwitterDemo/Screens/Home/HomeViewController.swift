@@ -11,27 +11,43 @@ import FirebaseAuth
 
 protocol HomeViewModelProtocol: class {
   var posts: [Post] { get set }
+  var loadedData: (() -> ())? { get set }
   var isSignedIn: Bool { get }
-  func fetch(completion: ([Post]) -> Void)
-  func writePost(post: Post, completion: @escaping (Post) -> Void)
+  func fetchAllPosts()
+  func writePost(post: Post, completion: @escaping (Post?, Error?) -> Void)
   func getPostByDate() -> [Post]
   func signOut()
 }
 
 class HomeViewModel : HomeViewModelProtocol {
-  var posts: [Post] = []
+  var loadedData: (() -> ())?
+  var posts: [Post] = [] {
+    didSet {
+      loadedData?()
+    }
+  }
   var isSignedIn: Bool {
     return UserManager.shared.isSignedIn()
   }
   
-  func fetch(completion: ([Post]) -> Void) {
-    
+  func fetchAllPosts() {
+    DataManager.shared.fetchAll() { (posts, error) in
+      if let posts = posts {
+         self.posts = posts
+      }
+    }
   }
   
-  func writePost(post: Post, completion: @escaping (Post) -> Void) {
+  func writePost(post: Post, completion: @escaping (Post?, Error?) -> Void) {
     guard isSignedIn else { return }
-    posts.append(post)
-    completion(post)
+    
+    DataManager.shared.newPost(post: post) { post, error in
+      if let post = post {
+        self.posts.append(post)
+      }
+      completion(post, error)
+    }
+    
   }
   
   func getPostByDate() -> [Post] {
@@ -45,7 +61,6 @@ class HomeViewModel : HomeViewModelProtocol {
       try Auth.auth().signOut()
     } catch {
       print("already logged out")
-      
     }
   }
   
@@ -57,7 +72,15 @@ final class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    loadApi()
     // Do any additional setup after loading the view.
+  }
+  
+  func loadApi() {
+    model.fetchAllPosts()
+    model.loadedData = { [weak self] in
+      self?.tableView.reloadData()
+    }
   }
   
   @IBAction func onSignedOut(_ sender: Any) {
@@ -97,7 +120,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension HomeViewController: WritingViewCellDelegate {
   func onPosted(post: Post) {
-    model.writePost(post: post) { post in
+    model.writePost(post: post) { (post, error)  in
       self.tableView.reloadData()
     }
   }

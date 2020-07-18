@@ -13,6 +13,7 @@ import FirebaseAuth
 protocol SignupViewModelProtocol: class {
   func onAuthStateChanged()
   func signup(email: String, password: String)
+  var signedUp: ((AuthDataResult)-> Void)? { get set }
 }
 
 class SignupViewModel : SignupViewModelProtocol {
@@ -50,10 +51,17 @@ class SignupViewController: UIViewController {
   @IBOutlet weak var userNameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   override func viewDidLoad() {
-        super.viewDidLoad()
-      
-        // Do any additional setup after loading the view.
+    super.viewDidLoad()
+    setupView()
+    // Do any additional setup after loading the view.
+  }
+  
+  func setupView() {
+    model.signedUp = { auth in
+      self.dismiss(animated: true, completion: nil)
     }
+  }
+  
   @IBAction func onSignupTap(_ sender: Any) {
     guard let email = userNameTextField.text,
       let password = passwordTextField.text else { return }

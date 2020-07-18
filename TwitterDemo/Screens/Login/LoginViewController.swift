@@ -60,6 +60,9 @@ class LoginViewController: UIViewController {
     model.onError = { error in
       print(error)
     }
+    if UserManager.shared.isSignedIn() {
+      self.present(HomeViewController.instantiate, animated: true, completion: nil)
+    }
   }
 
 }

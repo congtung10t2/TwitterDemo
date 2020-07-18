@@ -14,7 +14,6 @@ class DataManager {
   var db: Firestore!
   func configurate() {
     let settings = FirestoreSettings()
-    
     Firestore.firestore().settings = settings
     // [END setup]
     db = Firestore.firestore()
