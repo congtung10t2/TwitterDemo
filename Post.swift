@@ -17,7 +17,7 @@ struct Post: Codable {
 extension Post {
   init(content: String) {
     self.content = content
-    self.author = "anonymous"
+    self.author = UserManager.shared.getDisplayName() ?? ""
     self.date = Date()
   }
 }

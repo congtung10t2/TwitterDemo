@@ -18,12 +18,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-login" translatesAutoresizingMaskIntoConstraints="NO" id="gT8-ud-AdK">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ae4-zu-0Kd" userLabel="Username">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ae4-zu-0Kd" userLabel="Username">
                                 <rect key="frame" x="60" y="286" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WI0-4t-h22" userLabel="Password">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WI0-4t-h22" userLabel="Password">
                                 <rect key="frame" x="60" y="350" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -35,6 +35,9 @@
                                 <state key="normal" title="Login Demo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onLogin:" destination="7wW-e1-aoF" eventType="touchUpInside" id="jLN-CF-gK6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bqQ-bC-CVa" userLabel="SignupButton">
                                 <rect key="frame" x="60" y="477" width="294" height="33"/>
@@ -43,6 +46,9 @@
                                 <state key="normal" title="Signup Demo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="RoQ-sq-2AO" kind="show" id="mi5-7A-zC5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -66,6 +72,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dzU-qE-6s3"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="WI0-4t-h22" id="WxQ-zc-z5D"/>
+                        <outlet property="usernameTextField" destination="ae4-zu-0Kd" id="P6p-Up-kvo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ji2-6h-c04" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +84,7 @@
         <!--Signup View Controller-->
         <scene sceneID="AjL-Rv-m10">
             <objects>
-                <viewController id="RoQ-sq-2AO" customClass="SignupViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="RoQ-sq-2AO" customClass="SignupViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EIJ-h2-zIH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,12 +92,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-login" translatesAutoresizingMaskIntoConstraints="NO" id="g44-O3-az8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-wC-4oK" userLabel="Username">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jae-wC-4oK" userLabel="Username">
                                 <rect key="frame" x="60" y="286" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxz-Qm-s7g" userLabel="Password">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxz-Qm-s7g" userLabel="Password">
                                 <rect key="frame" x="60" y="350" width="294" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -99,6 +109,9 @@
                                 <state key="normal" title="Accept">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onSignupTap:" destination="RoQ-sq-2AO" eventType="touchUpInside" id="g6J-Bh-D8K"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brT-lR-2c0" userLabel="SignupButton">
                                 <rect key="frame" x="60" y="477" width="294" height="33"/>
@@ -107,6 +120,9 @@
                                 <state key="normal" title="Back To Home">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onDismissed:" destination="RoQ-sq-2AO" eventType="touchUpInside" id="fB6-Oh-sj3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -130,6 +146,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eQe-O5-TVX"/>
                     </view>
+                    <navigationItem key="navigationItem" id="FhJ-Cx-2kp"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="rxz-Qm-s7g" id="hJY-r7-0jl"/>
+                        <outlet property="userNameTextField" destination="Jae-wC-4oK" id="oB0-4p-5DZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LA4-Gq-gUN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

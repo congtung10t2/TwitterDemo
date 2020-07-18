@@ -35,8 +35,6 @@ extension Storyboardable where Self: UIViewController {
 }
 
 enum StoryboardType: String, StoryboardEnumerable {
-
-  
   var bundle: Bundle? {
       nil
   }

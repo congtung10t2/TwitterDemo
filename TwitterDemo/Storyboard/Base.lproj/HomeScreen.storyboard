@@ -10,12 +10,12 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TwitterDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
                                 <rect key="frame" x="0.0" y="80" width="414" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -28,12 +28,28 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7H-Ba-zZX" userLabel="SignoutButton">
+                                        <rect key="frame" x="334" y="50" width="80" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="JDA-8i-nGu"/>
+                                            <constraint firstAttribute="width" constant="80" id="xnV-yD-eBt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Sign out">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onSignedOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X1b-yx-zGe"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="501-VL-ggD"/>
                                     <constraint firstItem="zJk-0y-kx6" firstAttribute="centerX" secondItem="Kon-wL-IuA" secondAttribute="centerX" id="E65-hR-wMf"/>
                                     <constraint firstAttribute="bottom" secondItem="zJk-0y-kx6" secondAttribute="bottom" constant="15" id="KHx-5h-G3t"/>
+                                    <constraint firstAttribute="bottom" secondItem="b7H-Ba-zZX" secondAttribute="bottom" id="VNp-nK-ARb"/>
+                                    <constraint firstAttribute="trailing" secondItem="b7H-Ba-zZX" secondAttribute="trailing" id="jlo-jl-Y1q"/>
                                 </constraints>
                             </view>
                         </subviews>

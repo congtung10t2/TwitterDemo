@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol HomeViewModelProtocol: class {
   var posts: [Post] { get set }
-  var isSignedIn: Bool { get set }
+  var isSignedIn: Bool { get }
   func fetch(completion: ([Post]) -> Void)
   func writePost(post: Post, completion: @escaping (Post) -> Void)
   func getPostByDate() -> [Post]
@@ -19,7 +20,9 @@ protocol HomeViewModelProtocol: class {
 
 class HomeViewModel : HomeViewModelProtocol {
   var posts: [Post] = []
-  var isSignedIn: Bool = true
+  var isSignedIn: Bool {
+    return UserManager.shared.isSignedIn()
+  }
   
   func fetch(completion: ([Post]) -> Void) {
     
@@ -38,11 +41,16 @@ class HomeViewModel : HomeViewModelProtocol {
   }
   
   func signOut() {
-    
+    do {
+      try Auth.auth().signOut()
+    } catch {
+      print("already logged out")
+      
+    }
   }
   
 }
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
   var model: HomeViewModelProtocol = HomeViewModel()
   @IBOutlet weak var tableView: UITableView!
   
@@ -52,16 +60,17 @@ class HomeViewController: UIViewController {
     // Do any additional setup after loading the view.
   }
   
+  @IBAction func onSignedOut(_ sender: Any) {
+    model.signOut()
+    dismiss(animated: true, completion: nil)
+  }
   func setupView(){
     tableView.register(PostViewCell.self)
     tableView.register(WritingViewCell.self)
     tableView.delegate = self
     tableView.dataSource = self
     tableView.tableFooterView = UIView(frame: .zero)
-    
   }
-  
-  
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,3 +103,8 @@ extension HomeViewController: WritingViewCellDelegate {
   }
 }
 
+extension HomeViewController: Storyboardable {
+    static var board: StoryboardEnumerable {
+      return StoryboardType.homeScreen
+    }
+}

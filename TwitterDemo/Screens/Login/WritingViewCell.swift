@@ -50,6 +50,7 @@ class WritingViewCell: UITableViewCell {
     guard let text = contentTextField.text else { return }
     delegate?.onPosted(post: Post(content: text))
     contentTextField.text = ""
+    state = .NoContent
   }
   
   func setupView() {

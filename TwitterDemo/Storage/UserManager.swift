@@ -6,7 +6,14 @@
 //  Copyright © 2020 Tunghc. All rights reserved.
 //
 
-import Foundation
+import FirebaseAuth
 class UserManager {
   static let shared = UserManager()
+  func getDisplayName() -> String? {
+    return Auth.auth().currentUser?.displayName ?? Auth.auth().currentUser?.email ?? ""
+  }
+  
+  func isSignedIn() -> Bool {
+    return Auth.auth().currentUser != nil
+  }
 }

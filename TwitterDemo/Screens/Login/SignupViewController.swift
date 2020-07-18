@@ -17,19 +17,27 @@ protocol SignupViewModelProtocol: class {
 
 class SignupViewModel : SignupViewModelProtocol {
   var handle: AuthStateDidChangeListenerHandle?
+  var onError: ((Error) -> Void)?
+  var signedUp: ((AuthDataResult)-> Void)?
   init() {
     self.onAuthStateChanged()
   }
   func onAuthStateChanged() {
     handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-    
+      print(auth)
     }
   }
   func signup(email: String, password: String) {
-    FirebaseAPI.shared.signup(email: email, password: password) {_,_ in
-      
+    FirebaseAPI.shared.signup(email: email, password: password) { (auth, error) in
+      if let error = error {
+        self.onError?(error)
+      }
+      if let auth = auth {
+        self.signedUp?(auth)
+      }
     }
   }
+  
   deinit {
     if let handle = handle {
       Auth.auth().removeStateDidChangeListener(handle)
@@ -38,12 +46,20 @@ class SignupViewModel : SignupViewModelProtocol {
 }
 
 class SignupViewController: UIViewController {
-    
-    override func viewDidLoad() {
+  var model: SignupViewModelProtocol = SignupViewModel()
+  @IBOutlet weak var userNameTextField: UITextField!
+  @IBOutlet weak var passwordTextField: UITextField!
+  override func viewDidLoad() {
         super.viewDidLoad()
       
         // Do any additional setup after loading the view.
     }
-
-
+  @IBAction func onSignupTap(_ sender: Any) {
+    guard let email = userNameTextField.text,
+      let password = passwordTextField.text else { return }
+    model.signup(email: email, password: password)
+  }
+  @IBAction func onDismissed(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
 }
