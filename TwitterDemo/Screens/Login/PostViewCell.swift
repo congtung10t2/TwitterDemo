@@ -16,6 +16,7 @@ class PostViewCell: UITableViewCell {
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var contentTextView: UITextView!
   @IBOutlet weak var editButton: UIButton!
+  @IBOutlet weak var dateLabel: UILabel!
   var postId: String?
   weak var delegate: PostViewCellDelegate?
   override func awakeFromNib() {
@@ -35,5 +36,6 @@ class PostViewCell: UITableViewCell {
     editButton.isHidden = !(post.author == UserManager.shared.getDisplayName())
     userNameLabel.text = post.author
     contentTextView.text = post.content
+    dateLabel.text = post.date.timeAgoDisplay()
   }
 }
