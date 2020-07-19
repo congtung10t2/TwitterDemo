@@ -21,9 +21,12 @@
 
 - [x] User can edit their post (By tap on the pencil symbol then tap edit)
 
+- [x] Private page for user
+
 ### For the next update: 
 
 - [ ] Update the photo for each user 
 
-- [ ] Private page for each user
+- [ ] Show private page when tap to photo user
+
 

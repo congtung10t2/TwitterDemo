@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="130" estimatedRowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-l0-D93">
                                 <rect key="frame" x="0.0" y="80" width="414" height="782"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -52,21 +52,42 @@
                                     <constraint firstAttribute="trailing" secondItem="b7H-Ba-zZX" secondAttribute="trailing" id="jlo-jl-Y1q"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your page is blank, let's try write something" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogL-wt-Mpb" userLabel="Notify">
+                                <rect key="frame" x="66.5" y="280" width="281.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tabBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pri-YD-fjy">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Feeds" image="house" catalog="system" id="lDE-LI-raj" userLabel="Home"/>
+                                    <tabBarItem title="Your page" image="person" catalog="system" id="zbN-UL-5gp"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JNs-l0-D93" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Qf-Y5-p3Z"/>
                             <constraint firstItem="Kon-wL-IuA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2h0-ea-Ovz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pri-YD-fjy" secondAttribute="trailing" id="M0e-9F-i5c"/>
                             <constraint firstItem="JNs-l0-D93" firstAttribute="top" secondItem="Kon-wL-IuA" secondAttribute="bottom" id="Tm3-E4-jqc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kon-wL-IuA" secondAttribute="trailing" id="XGD-ez-lSc"/>
                             <constraint firstItem="JNs-l0-D93" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dcu-Iq-7Vm"/>
+                            <constraint firstItem="Pri-YD-fjy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="deO-p2-j3w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JNs-l0-D93" secondAttribute="trailing" id="iPY-KK-ITz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pri-YD-fjy" secondAttribute="bottom" id="iTf-qa-D0d"/>
+                            <constraint firstItem="ogL-wt-Mpb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="kj9-78-myS"/>
                             <constraint firstItem="Kon-wL-IuA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m8P-dM-74f"/>
+                            <constraint firstItem="ogL-wt-Mpb" firstAttribute="top" secondItem="Kon-wL-IuA" secondAttribute="bottom" constant="200" id="mkO-ZD-d4R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JNs-l0-D93" secondAttribute="bottom" id="twH-rI-uwZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="homeTabbarItem" destination="Pri-YD-fjy" id="O5C-Hs-71q"/>
+                        <outlet property="notifyLabel" destination="ogL-wt-Mpb" id="63c-Du-0dX"/>
                         <outlet property="tableView" destination="JNs-l0-D93" id="8PL-53-OeA"/>
                     </connections>
                 </viewController>
@@ -127,6 +148,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="ic-close" width="48" height="48"/>
+        <image name="person" catalog="system" width="128" height="117"/>
     </resources>
 </document>

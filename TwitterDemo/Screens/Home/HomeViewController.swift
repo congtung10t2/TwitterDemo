@@ -12,17 +12,32 @@ import MaterialComponents.MaterialActionSheet
 
 final class HomeViewController: UIViewController {
   var model: HomeViewModelProtocol = HomeViewModel()
+  @IBOutlet weak var homeTabbarItem: UITabBar!
+  @IBOutlet weak var notifyLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   var edittingId: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
+    onModelBind()
     loadApi()
   }
-  func onListenError(){
+  func onModelBind(){
     model.onError = {[weak self] error in
       self?.showAlert(title: "Demo", message: error.localizedDescription)
+    }
+    model.onStateChanged = {[weak self ] state in
+      guard let self = self else { return }
+      switch state {
+      case .YourPage:
+        if self.model.selectedPosts.isEmpty {
+          self.notifyLabel.isHidden = false
+          return
+        }
+      default: break
+      }
+      self.notifyLabel.isHidden = true
     }
   }
   
@@ -63,15 +78,17 @@ final class HomeViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.tableFooterView = UIView(frame: .zero)
+    homeTabbarItem.selectedItem = homeTabbarItem.items?[0]
+    homeTabbarItem.delegate = self
   }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if model.isSignedIn {
-      return model.posts.count + 1
+      return model.selectedPosts.count + 1
     }
-    return model.posts.count
+    return model.selectedPosts.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,8 +99,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       cell.delegate = self
       return cell
     }
+    self.notifyLabel.isHidden = true
     let cell: PostViewCell = tableView.dequeueReusableCell(for: indexPath)
-    let posts = model.getPostByDate()
+    let posts = model.selectedPosts
     cell.delegate = self
     let post = posts[indexPath.row - cellIndexForSigned]
     cell.load(id: post.0, post: post.1)
@@ -98,6 +116,17 @@ extension HomeViewController: WritingViewCellDelegate {
       loading.hide(animated: true)
       self.tableView.reloadData()
     }
+  }
+}
+
+extension HomeViewController: UITabBarDelegate {
+  func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    if item == tabBar.items?[0] {
+      model.state = .Feeds
+    } else {
+      model.state = .YourPage
+    }
+    tableView.reloadData()
   }
 }
 

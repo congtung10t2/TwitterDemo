@@ -7,6 +7,11 @@
 //
 import FirebaseAuth
 
+enum HomeTabState {
+  case Feeds
+  case YourPage
+}
+
 protocol HomeViewModelProtocol: class {
   var posts: [String: Post] { get set }
   var loadedData: (() -> ())? { get set }
@@ -17,19 +22,40 @@ protocol HomeViewModelProtocol: class {
   func getPostByDate() -> [(String, Post)]
   func signOut()
   var onError: ((Error) -> Void)? { get set }
+  var onStateChanged: ((HomeTabState) -> Void)? { get set }
+  var selectedPosts: [(String, Post)] { get }
+  var state: HomeTabState { get set }
 }
 
 class HomeViewModel : HomeViewModelProtocol {
   
   var loadedData: (() -> ())?
   var onError: ((Error) -> Void)?
+  var onStateChanged: ((HomeTabState) -> Void)?
   var posts: [String: Post] = [:] {
     didSet {
       loadedData?()
     }
   }
+  var state: HomeTabState = .Feeds {
+    didSet {
+      if state != oldValue {
+        self.onStateChanged?(state)
+      }
+    }
+  }
+  
   var isSignedIn: Bool {
     return UserManager.shared.isSignedIn()
+  }
+  
+  var selectedPosts: [(String, Post)] {
+    switch state {
+    case .Feeds:
+      return getPostByDate()
+    default:
+      return getPostByDate().filter({ $0.1.author == UserManager.shared.getDisplayName() })
+    }
   }
   
   func fetchAllPosts() {
@@ -68,6 +94,7 @@ class HomeViewModel : HomeViewModelProtocol {
       post1.value.date > post2.value.date
     }
   }
+  
   
   func signOut() {
     do {
