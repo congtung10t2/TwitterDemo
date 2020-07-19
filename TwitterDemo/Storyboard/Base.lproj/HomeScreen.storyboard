@@ -149,7 +149,7 @@
     </scenes>
     <resources>
         <image name="house" catalog="system" width="128" height="110"/>
-        <image name="ic-close" width="48" height="48"/>
+        <image name="ic-close" width="24" height="24"/>
         <image name="person" catalog="system" width="128" height="117"/>
     </resources>
 </document>

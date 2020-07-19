@@ -108,6 +108,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     cell.layoutIfNeeded()
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return indexPath.row == 0 && model.isSignedIn ? 100 : 130
+  }
 }
 extension HomeViewController: WritingViewCellDelegate {
   func onPosted(post: Post) {
