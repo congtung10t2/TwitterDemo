@@ -120,7 +120,11 @@ extension HomeViewController: PostViewCellDelegate {
     let actionTwo = MDCActionSheetAction(title: "Edit",
                                          image: UIImage(named: "Edit"),
                                          handler: {_ in
-                                          self.showAlert(title: "Demo", message: "Will implement later")
+                                          let editVc = EditPostViewController.instantiate
+                                          editVc.model.setup(id: id, content: self.model.posts[id]?.content)
+                                          editVc.delegate = self
+                                          self.present(editVc, animated: true, completion: nil)
+                                          
     })
     actionSheet.addAction(actionOne)
     actionSheet.addAction(actionTwo)
@@ -128,7 +132,12 @@ extension HomeViewController: PostViewCellDelegate {
     present(actionSheet, animated: true, completion: nil)
   }
 }
-
+extension HomeViewController: EditPostDelegate {
+  func onEdittedPost(content: String) {
+    guard let edittingId = edittingId else { return }
+    self.model.posts[edittingId]?.content = content
+  }
+}
 extension HomeViewController: Storyboardable {
     static var board: StoryboardEnumerable {
       return StoryboardType.homeScreen

@@ -67,8 +67,7 @@ class LoginViewController: UIViewController {
     guard let username = usernameTextField.text,
       let password = passwordTextField.text else { return }
     let loading = showLoading()
-    model.signIn(email: username, password: password) { [weak self] (auth, error) in
-      guard let self = self else { return }
+    model.signIn(email: username, password: password) { (auth, error) in
       loading.hide(animated: true)
     }
   }

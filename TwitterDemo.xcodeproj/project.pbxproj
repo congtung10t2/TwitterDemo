@@ -11,6 +11,7 @@
 		2C393F71A33D487C4410F649 /* Pods_TwitterDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D98864B605FF4D6C3F95C5 /* Pods_TwitterDemo.framework */; };
 		8A2F330DE4BC80171A4910F0 /* Pods_TwitterDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E41B542FC8EF4ED85D747BC /* Pods_TwitterDemoTests.framework */; };
 		A40620C524C253A6009394BB /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40620C424C253A6009394BB /* UIImageView+Extensions.swift */; };
+		A420D93B24C41651005C523A /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A420D93A24C41651005C523A /* EditPostViewController.swift */; };
 		A422B44E24C297EB008B0824 /* WritingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B44D24C297EB008B0824 /* WritingViewCell.swift */; };
 		A422B45024C29801008B0824 /* WritingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A422B44F24C29801008B0824 /* WritingViewCell.xib */; };
 		A422B45324C2B03B008B0824 /* StoryboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A422B45224C2B03B008B0824 /* StoryboardType.swift */; };
@@ -65,6 +66,7 @@
 		664B99F832A1E6E27BE29CBB /* Pods_TwitterDemo_TwitterDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterDemo_TwitterDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9DF9F1FA3E2F77F7685C2F /* Pods-TwitterDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterDemoTests.release.xcconfig"; path = "Target Support Files/Pods-TwitterDemoTests/Pods-TwitterDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		A40620C424C253A6009394BB /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+Extensions.swift"; path = "TwitterDemo/Screens/Login/UIImageView+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		A420D93A24C41651005C523A /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		A422B44D24C297EB008B0824 /* WritingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WritingViewCell.swift; path = TwitterDemo/Screens/Login/WritingViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A422B44F24C29801008B0824 /* WritingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = WritingViewCell.xib; path = TwitterDemo/Screens/Login/WritingViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A422B45224C2B03B008B0824 /* StoryboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardType.swift; sourceTree = "<group>"; };
@@ -152,6 +154,14 @@
 				8A9DF9F1FA3E2F77F7685C2F /* Pods-TwitterDemoTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A420D93924C41638005C523A /* EditPost */ = {
+			isa = PBXGroup;
+			children = (
+				A420D93A24C41651005C523A /* EditPostViewController.swift */,
+			);
+			path = EditPost;
 			sourceTree = "<group>";
 		};
 		A422B45124C2B022008B0824 /* Types */ = {
@@ -317,6 +327,7 @@
 		C7925FDB24C1A64400262A28 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				A420D93924C41638005C523A /* EditPost */,
 				C75FFAB824C1B64900583450 /* Login */,
 				C7925FDC24C1A67400262A28 /* Home */,
 			);
@@ -593,6 +604,7 @@
 				A422B45324C2B03B008B0824 /* StoryboardType.swift in Sources */,
 				A429E15324C24EBC008FE7C6 /* PostViewCell.swift in Sources */,
 				A429E14F24C2416E008FE7C6 /* FirebaseAPI.swift in Sources */,
+				A420D93B24C41651005C523A /* EditPostViewController.swift in Sources */,
 				A429E15924C24F9A008FE7C6 /* UIView+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

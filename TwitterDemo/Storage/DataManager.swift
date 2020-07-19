@@ -47,4 +47,14 @@ class DataManager {
       completion(err)
     }
   }
+  
+  func update(id: String, content: String, completion: @escaping (Error?) -> Void) {
+    db.collection("posts").document(id).updateData(["content": content]) { error in
+        if let error = error {
+            completion(error)
+        } else {
+            completion(nil)
+        }
+    }
+  }
 }

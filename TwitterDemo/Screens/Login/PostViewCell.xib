@@ -31,14 +31,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Contents of the post" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="teV-Oj-cR9">
-                        <rect key="frame" x="108" y="38" width="276" height="51"/>
+                        <rect key="frame" x="108" y="29" width="276" height="51"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="51" id="ANL-cR-Pwl"/>
                         </constraints>
                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartDashesType="yes" smartInsertDeleteType="yes" smartQuotesType="yes"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNF-79-MpF" userLabel="EditButton">
                         <rect key="frame" x="389" y="39" width="22" height="22"/>
@@ -65,7 +65,7 @@
                     <constraint firstItem="Hmq-U9-dQP" firstAttribute="leading" secondItem="pBX-yt-BwI" secondAttribute="leading" constant="8" id="E8d-cK-eeI"/>
                     <constraint firstItem="Ur2-TJ-GOl" firstAttribute="leading" secondItem="BfB-Nj-a3L" secondAttribute="trailing" constant="10" id="Gfx-G7-nck"/>
                     <constraint firstAttribute="bottom" secondItem="Hmq-U9-dQP" secondAttribute="bottom" constant="11" id="LRW-3Q-wkk"/>
-                    <constraint firstItem="teV-Oj-cR9" firstAttribute="top" secondItem="BfB-Nj-a3L" secondAttribute="bottom" constant="12" id="QfU-8h-bks"/>
+                    <constraint firstItem="teV-Oj-cR9" firstAttribute="top" secondItem="BfB-Nj-a3L" secondAttribute="bottom" constant="3" id="QfU-8h-bks"/>
                     <constraint firstItem="Ur2-TJ-GOl" firstAttribute="bottom" secondItem="BfB-Nj-a3L" secondAttribute="bottom" id="UyS-lv-HWP"/>
                     <constraint firstItem="eNF-79-MpF" firstAttribute="centerY" secondItem="pBX-yt-BwI" secondAttribute="centerY" id="VRU-Fq-9Fc"/>
                     <constraint firstAttribute="trailing" secondItem="eNF-79-MpF" secondAttribute="trailing" constant="3" id="WJ7-w6-Sra"/>

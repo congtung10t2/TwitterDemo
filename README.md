@@ -17,13 +17,13 @@
 
 - [x] User can see other post which order by date (lastest first)
 
-- [x] User can delete their own post (By tap on the pencil symbol at the right side) 
+- [x] User can delete their own post (By tap on the pencil symbol then tap delete) 
+
+- [x] User can edit their post (By tap on the pencil symbol then tap edit)
 
 ### For the next update: 
 
 - [ ] Update the photo for each user 
-
-- [ ] User can edit their post 
 
 - [ ] Private page for each user
 
