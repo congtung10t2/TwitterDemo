@@ -19,12 +19,10 @@ final class HomeViewController: UIViewController {
     super.viewDidLoad()
     setupView()
     loadApi()
-    
-    // Do any additional setup after loading the view.
   }
   func onListenError(){
-    model.onError = { error in
-      self.showAlert(title: "Demo", message: error.localizedDescription)
+    model.onError = {[weak self] error in
+      self?.showAlert(title: "Demo", message: error.localizedDescription)
     }
   }
   
@@ -41,16 +39,21 @@ final class HomeViewController: UIViewController {
   }
   
   func onPostDeleting(id: String) {
-    let loading = showLoading()
-    model.removePost(id: id) { error in
-      loading.hide(animated: true)
-      guard let error = error else {
-        self.model.posts[id] = nil
-        self.tableView.reloadData()
-        return
+    
+    showAlert(title: "Demo", message: "Are you sure want to delete this Post?") { [weak self] in
+      guard let self = self else { return }
+      let loading = self.showLoading()
+      self.model.removePost(id: id) { error in
+        loading.hide(animated: true)
+        guard let error = error else {
+          self.model.posts[id] = nil
+          self.tableView.reloadData()
+          return
+        }
+        self.model.onError?(error)
       }
-      print(error)
     }
+    
    }
   
   
@@ -84,6 +87,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     cell.delegate = self
     let post = posts[indexPath.row - cellIndexForSigned]
     cell.load(id: post.0, post: post.1)
+    cell.layoutIfNeeded()
     return cell
   }
 }

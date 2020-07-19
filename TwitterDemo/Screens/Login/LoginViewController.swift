@@ -21,9 +21,9 @@ class LoginViewModel : LoginViewModelProtocol {
   var onError: ((Error) -> Void)?
   var onSignIn:(() -> Void)?
   func onAuthStateListener() {
-    handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+    handle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
       if UserManager.shared.isSignedIn() {
-        self.onSignIn?()
+        self?.onSignIn?()
       }
     }
     
@@ -67,16 +67,17 @@ class LoginViewController: UIViewController {
     guard let username = usernameTextField.text,
       let password = passwordTextField.text else { return }
     let loading = showLoading()
-    model.signIn(email: username, password: password) { (auth, error) in
+    model.signIn(email: username, password: password) { [weak self] (auth, error) in
+      guard let self = self else { return }
       loading.hide(animated: true)
     }
   }
   func setupView() {
-    model.onSignIn = {
-      self.present(HomeViewController.instantiate, animated: true, completion: nil)
+    model.onSignIn = { [weak self] in
+      self?.present(HomeViewController.instantiate, animated: true, completion: nil)
     }
-    model.onError = { error in
-      self.showAlert(title: "Demo", message: error.localizedDescription)
+    model.onError = { [weak self] error in
+      self?.showAlert(title: "Demo", message: error.localizedDescription)
     }
     model.onAuthStateListener()
     

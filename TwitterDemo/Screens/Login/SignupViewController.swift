@@ -25,20 +25,19 @@ class SignupViewModel : SignupViewModelProtocol {
     self.onAuthStateChanged()
   }
   func onAuthStateChanged() {
-    handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-      print(auth)
+    handle = Auth.auth().addStateDidChangeListener {[weak self] (auth, user) in
       if UserManager.shared.isSignedIn() {
-        self.signedUp?()
+        self?.signedUp?()
       }
     }
   }
   func signup(email: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)? ) {
-    FirebaseAPI.shared.signup(email: email, password: password) { (auth, error) in
+    FirebaseAPI.shared.signup(email: email, password: password) {[weak self] (auth, error) in
       if let error = error {
-        self.onError?(error)
+        self?.onError?(error)
       }
       if auth != nil {
-        self.signedUp?()
+        self?.signedUp?()
       }
       completion?(auth, error)
     }
@@ -62,11 +61,11 @@ class SignupViewController: UIViewController {
   }
   
   func setupView() {
-    model.onError = { error in
-      self.showAlert(title: "Demo", message: error.localizedDescription)
+    model.onError = { [weak self] error in
+      self?.showAlert(title: "Demo", message: error.localizedDescription)
     }
-    model.signedUp = {
-      self.dismiss(animated: true, completion: nil)
+    model.signedUp = { [weak self] in
+      self?.dismiss(animated: true, completion: nil)
     }
   }
   

@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-U9-dQP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-U9-dQP">
                         <rect key="frame" x="8" y="9" width="80" height="80"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Hmq-U9-dQP" secondAttribute="height" multiplier="1:1" id="91P-Q1-pa8"/>
@@ -27,9 +27,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Contents of the post" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="teV-Oj-cR9">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Contents of the post" textAlignment="natural" id="teV-Oj-cR9">
                         <rect key="frame" x="108" y="38" width="276" height="51"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="51" id="ANL-cR-Pwl"/>
+                        </constraints>
                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -48,7 +52,6 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Hmq-U9-dQP" firstAttribute="top" secondItem="pBX-yt-BwI" secondAttribute="top" constant="9" id="3Dq-I9-IOv"/>
-                    <constraint firstAttribute="bottom" secondItem="teV-Oj-cR9" secondAttribute="bottom" constant="11" id="43G-Tb-iDo"/>
                     <constraint firstItem="teV-Oj-cR9" firstAttribute="leading" secondItem="Hmq-U9-dQP" secondAttribute="trailing" constant="20" id="Bd5-nL-nkX"/>
                     <constraint firstItem="BfB-Nj-a3L" firstAttribute="top" secondItem="pBX-yt-BwI" secondAttribute="top" constant="9" id="DKL-SS-qP2"/>
                     <constraint firstItem="Hmq-U9-dQP" firstAttribute="leading" secondItem="pBX-yt-BwI" secondAttribute="leading" constant="8" id="E8d-cK-eeI"/>
